@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "jobviper"
+version = "0.1.0"
+description = "A CLI tool to track your job hunt."
+authors = ["Richard O'Neil <richard@bytemares.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = { extras = [
+  "all",
+], version = "^0.20.1" } # Updated to allow for a newer version
+rich = "^13.3.5"
+sqlalchemy = "^2.0.15"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+jobviper = "jobviper.main:app"
