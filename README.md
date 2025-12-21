@@ -2,7 +2,7 @@
 
 # JobViper – Job Hunt Tracker CLI
 
-**JobViper** is a Python console application designed to help users (me) track the progress of their job hunt. 
+JobViper is a Python console application designed to help users (me) track the progress of their job hunt. 
 
 ---
 
