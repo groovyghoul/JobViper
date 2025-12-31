@@ -130,13 +130,16 @@ jobviper <command> [subcommand] [options]
 
 ---
 
-## ⚡ Design Philosophy
+## ⚡To hack on JobViper
 
-* Commands read like sentences for fast, intuitive use.
-* Fast-path commands for quick daily updates.
-* Clear separation of jobs, contacts, and results.
-* Easy to extend with dashboards, stats, and follow-up reminders.
-* Lightweight, console-first, but expandable with rich output.
+```bash
+git clone <https://github.com/groovyghoul/JobViper.git>
+
+cd JobViper
+python -m venv venv
+source venv/bin/activate
+pip install -e .
+```
 
 ---
 
