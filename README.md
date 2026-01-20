@@ -6,7 +6,7 @@ JobViper is a Python console application designed to help users (me) track the p
 
 ---
 
-## 🐍 Purpose
+## Purpose
 
 * Track all job applications with key details.
 * Record interactions with recruiters, hiring managers, and other contacts.
@@ -16,7 +16,7 @@ JobViper is a Python console application designed to help users (me) track the p
 
 ---
 
-## 🎯 Core Features
+## Core Features
 
 ### 1. Applications
 
@@ -60,20 +60,43 @@ jobviper <command> [subcommand] [options]
 
 **Examples:**
 
-* Add a job:
-  `jobviper add job --company "JetBrains" --title "Senior .NET Developer" --date 2025-12-19`
+---
 
-* List jobs:
-  `jobviper list jobs`
+### `jobviper contact add`
 
-* Show job details:
-  `jobviper show job JV-0001`
+Adds a new contact entry for a specific job application to track networking and follow-ups.
 
-* Add a contact to a job:
-  `jobviper contact add JV-0001 --type email --with "Alex P." --notes "Initial outreach"`
+#### **Usage**
 
-* Record a result:
-  `jobviper result add JV-0001 --status interview --date 2025-12-28 --notes "Passed recruiter screen"`
+```bash
+jobviper contact add [OPTIONS] JOB_ID
+
+```
+
+#### **Arguments**
+
+* **`JOB_ID`** (TEXT, Required): The unique identifier for the job (e.g., `JV-0001`).
+
+#### **Options**
+
+| Option | Shorthand | Type | Description |
+| --- | --- | --- | --- |
+| `--type` | `-t` | **TEXT** | **Required.** Type of contact (e.g., email, phone, LinkedIn). |
+| `--with` | `-w` | **TEXT** | **Required.** The person or organization contacted. |
+| `--notes` | `-n` | **TEXT** | Additional notes about the interaction. |
+| `--date` | `-d` | **DATE** | Date of contact (YYYY-MM-DD). |
+| `--help` |  |  | Show the help message and exit. |
+
+> **Note on Date Formats:** The `--date` option supports multiple formats including `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM:SS`, and `YYYY-MM-DD HH:MM:SS`.
+
+#### **Example**
+
+```bash
+jobviper contact add JV-0001 --type LinkedIn --with "Jane Doe" --notes "Sent follow-up after interview" --date 2026-01-19
+
+```
+
+---
 
 ### 5. Searching & Filtering (Future)
 
@@ -96,7 +119,7 @@ jobviper <command> [subcommand] [options]
 
 ---
 
-## 🗂 Data Model
+## Data Model
 
 ### jobs
 
@@ -130,7 +153,7 @@ jobviper <command> [subcommand] [options]
 
 ---
 
-## ⚡To hack on JobViper
+## To hack on JobViper
 
 ```bash
 git clone <https://github.com/groovyghoul/JobViper.git>
@@ -143,7 +166,7 @@ pip install -e .
 
 ---
 
-## 📦 Technical Stack
+## Technical Stack
 
 * Python 3.10+
 * CLI: [Typer](https://typer.tiangolo.com/)
