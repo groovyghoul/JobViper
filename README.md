@@ -62,6 +62,24 @@ jobviper <command> [subcommand] [options]
 
 ---
 
+### `jobviper initdb`
+
+ Initializes the database.
+
+#### **Usage**
+
+```bash
+
+Usage: jobviper initdb [OPTIONS]
+
+```
+
+#### **Options**
+
+| Option | Shorthand | Type | Description |
+| --- | --- | --- | --- |
+| `--help` |  |  | Show this message and exit. |
+
 ### `jobviper contact add`
 
 Adds a new contact entry for a specific job application to track networking and follow-ups.
