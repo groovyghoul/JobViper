@@ -48,7 +48,9 @@ JobViper is a Python console application designed to help users (me) track the p
   * Notes (e.g., feedback from recruiter, reason for rejection)
 * Automatically update job status based on outcome entries.
 
-### 4. CLI Commands
+### 4. CLI Command Reference
+
+(NOTE: the command structure is still a WIP...this may (will) change soon)
 
 The command structure is intuitive and extendable:
 
@@ -58,19 +60,26 @@ The command structure is intuitive and extendable:
 jobviper <command> [subcommand] [options]
 ```
 
-**Examples:**
+Use these commands to manage your job search workflow. All commands support the `--help` flag for detailed information.
+
+### Table of Contents
+
+* `jobviper add-job` - Create a new application.
+* `jobviper list-jobs` - View all applications.
+* `jobviper show-job` - View detailed info for a specific job.
+* `jobviper contact add` - Track networking and follow-ups.
+* `jobviper result add` - Record application outcomes.
 
 ---
 
-### `jobviper initdb`
+### `jobviper add-job`
 
- Initializes the database.
+Adds a new job application to your tracker.
 
 #### **Usage**
 
 ```bash
-
-Usage: jobviper initdb [OPTIONS]
+jobviper add-job [OPTIONS]
 
 ```
 
@@ -78,11 +87,46 @@ Usage: jobviper initdb [OPTIONS]
 
 | Option | Shorthand | Type | Description |
 | --- | --- | --- | --- |
-| `--help` |  |  | Show this message and exit. |
+| `--company` | `-c` | **TEXT** | **Required.** Name of the company. |
+| `--title` | `-t` | **TEXT** | **Required.** Job title (e.g., Software Engineer). |
+| `--date` | `-d` | **DATE** | Date of application (defaults to current if omitted). |
+| `--source` | `-s` | **TEXT** | Where you found the job (e.g., LinkedIn, Indeed). |
+
+---
+
+### `jobviper list-jobs`
+
+Displays a list of all your recorded job applications.
+
+#### **Usage**
+
+```bash
+jobviper list-jobs
+
+```
+
+---
+
+### `jobviper show-job`
+
+Shows comprehensive details for a specific job application, including associated contacts and results.
+
+#### **Usage**
+
+```bash
+jobviper show-job JOB_ID
+
+```
+
+#### **Arguments**
+
+* **`JOB_ID`** (TEXT, Required): The unique identifier for the job (e.g., `JV-0001`).
+
+---
 
 ### `jobviper contact add`
 
-Adds a new contact entry for a specific job application to track networking and follow-ups.
+Adds a new contact entry for a specific job application to track networking.
 
 #### **Usage**
 
@@ -93,26 +137,51 @@ jobviper contact add [OPTIONS] JOB_ID
 
 #### **Arguments**
 
-* **`JOB_ID`** (TEXT, Required): The unique identifier for the job (e.g., `JV-0001`).
+* **`JOB_ID`** (TEXT, Required): The unique identifier for the job.
 
 #### **Options**
 
 | Option | Shorthand | Type | Description |
 | --- | --- | --- | --- |
-| `--type` | `-t` | **TEXT** | **Required.** Type of contact (e.g., email, phone, LinkedIn). |
-| `--with` | `-w` | **TEXT** | **Required.** The person or organization contacted. |
+| `--type` | `-t` | **TEXT** | **Required.** Type of contact (e.g., email, LinkedIn). |
+| `--with` | `-w` | **TEXT** | **Required.** Person or organization contacted. |
 | `--notes` | `-n` | **TEXT** | Additional notes about the interaction. |
-| `--date` | `-d` | **DATE** | Date of contact (YYYY-MM-DD). |
-| `--help` |  |  | Show the help message and exit. |
+| `--date` | `-d` | **DATE** | Date of contact. |
 
-> **Note on Date Formats:** The `--date` option supports multiple formats including `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM:SS`, and `YYYY-MM-DD HH:MM:SS`.
+---
 
-#### **Example**
+### `jobviper result add`
+
+Records a new result or outcome for a job application and automatically updates the job status.
+
+#### **Usage**
 
 ```bash
-jobviper contact add JV-0001 --type LinkedIn --with "Jane Doe" --notes "Sent follow-up after interview" --date 2026-01-19
+jobviper result add [OPTIONS] JOB_ID
 
 ```
+
+#### **Arguments**
+
+* **`JOB_ID`** (TEXT, Required): The unique identifier for the job.
+
+#### **Options**
+
+| Option | Shorthand | Type | Description |
+| --- | --- | --- | --- |
+| `--status` | `-s` | **TEXT** | **Required.** Status update (e.g., interview, offer, rejected). |
+| `--date` | `-d` | **DATE** | Date of the result. |
+| `--notes` | `-n` | **TEXT** | Notes about the outcome. |
+
+---
+
+### Supported Date Formats
+
+For any command accepting a `--date` flag, the following formats are valid:
+
+* `YYYY-MM-DD` (e.g., 2026-01-19)
+* `YYYY-MM-DDTHH:MM:SS`
+* `YYYY-MM-DD HH:MM:SS`
 
 ---
 
